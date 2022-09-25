@@ -80,13 +80,15 @@
 --WHERE Age < 22;
 --WHERE Age < 23 AND Gender = 'Male';
 --WHERE Age = 21 OR Age = 27;
---WHERE Last_Name LIKE 'A%';	-- Last name start with 'A'
+--WHERE Last_Name LIKE 'A%'	-- Last name start with 'A'
+--WHERE Last_Name LIKE 'A%A'	-- Last name start and end with 'A'
 --WHERE Last_Name LIKE '%A';	-- End with 'A'
 --WHERE Last_Name LIKE '%A%';	-- 'A' anywhere in Last name
 --WHERE Last_Name LIKE 'A%W%';	-- Start with 'A' and 'W' anywhere
 --WHERE Last_Name is NULL
 --WHERE Last_Name is NOT NULL
 --WHERE First_Name IN ('Elif','Mahmut')
+--WHERE Age%2=0 -- age is even
 
 
 ---- *****GROUP BY AND ORDER BY STATEMENTS*****
@@ -101,3 +103,32 @@
 --FROM EmployeeDemographics
 ----ORDER BY Age ASC
 --ORDER BY 4 DESC	-- 4th column = Age
+
+
+---- *****INNER OUTER JOINS*****
+
+--SELECT *
+--FROM EmployeeDemographics
+--INNER JOIN EmployeeSalery -- Intersection of Demographics and Salery tables
+--	ON EmployeeDemographics.Employee_ID = EmployeeSalery.Employee_ID
+
+SELECT EmployeeDemographics.Employee_ID, First_Name, Last_Name, Job_Title, Salary
+FROM EmployeeDemographics
+INNER JOIN  EmployeeSalery
+	ON EmployeeDemographics.Employee_ID = EmployeeSalery.Employee_ID
+
+--SELECT *
+--FROM EmployeeDemographics
+--FULL OUTER JOIN EmployeeSalery -- Join of Demographics and Salery tables
+--	ON EmployeeDemographics.Employee_ID = EmployeeSalery.Employee_ID
+
+--SELECT *
+--FROM EmployeeDemographics
+--LEFT OUTER JOIN EmployeeSalery -- Join All of Demographics table and intersection of Salary tables
+--	ON EmployeeDemographics.Employee_ID = EmployeeSalery.Employee_ID
+
+
+--SELECT *
+--FROM EmployeeDemographics
+--RIGHT OUTER JOIN EmployeeSalery 
+--	ON EmployeeDemographics.Employee_ID = EmployeeSalery.Employee_ID
