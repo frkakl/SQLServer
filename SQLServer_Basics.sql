@@ -7,6 +7,13 @@
 --Age int,
 --Gender varchar(50))
 
+--CREATE TABLE WareHouseEmployeeDemographics
+--(Employee_ID int,
+--First_Name varchar(50),
+--Last_Name varchar(50),
+--Age int,
+--Gender varchar(50))
+
 --CREATE TABLE EmployeeSalery
 --(Employee_ID int,
 --Job_Title varchar(50),
@@ -27,6 +34,13 @@
 --(1008, 'Mahmut', 'WEFASD', 27, 'Male'),
 --(1009, 'Kaya', 'AEWFDSS', 21, 'Male')
 
+--INSERT INTO WareEmployeeDemographics VALUES
+--(Null, 'Ömer', 'Akal', 20, 'Male'),
+--(1001, 'Ayşe', 'ASDFASD', 20, 'Female'),
+--(Null, 'Naz', 'ASDFA', Null, 'Female'),
+--(1003, 'Ahmet', 'ASDFA', 21, Null),
+--(1004, 'Nurgül', 'ASDFADSF', 22, Null),
+
 --INSERT INTO EmployeeSalery VALUES
 --(1001, 'Data Analyst', 153000),
 --(1002, 'Back-End Dev', 120000),
@@ -39,9 +53,6 @@
 --(1009, 'Back-End Dev', 132000)
 
 
----- *****DELETE DATA IN TABLE*****
-
---DELETE FROM EmployeeDemographics WHERE First_Name = 'Ömer'; --Delete Row
 
 
 ---- *****SELECT AND FROM STATEMENTS*****
@@ -112,10 +123,10 @@
 --INNER JOIN EmployeeSalery -- Intersection of Demographics and Salery tables
 --	ON EmployeeDemographics.Employee_ID = EmployeeSalery.Employee_ID
 
-SELECT EmployeeDemographics.Employee_ID, First_Name, Last_Name, Job_Title, Salary
-FROM EmployeeDemographics
-INNER JOIN  EmployeeSalery
-	ON EmployeeDemographics.Employee_ID = EmployeeSalery.Employee_ID
+--SELECT EmployeeDemographics.Employee_ID, First_Name, Last_Name, Job_Title, Salary
+--FROM EmployeeDemographics
+--INNER JOIN  EmployeeSalery
+--	ON EmployeeDemographics.Employee_ID = EmployeeSalery.Employee_ID
 
 --SELECT *
 --FROM EmployeeDemographics
@@ -132,3 +143,42 @@ INNER JOIN  EmployeeSalery
 --FROM EmployeeDemographics
 --RIGHT OUTER JOIN EmployeeSalery 
 --	ON EmployeeDemographics.Employee_ID = EmployeeSalery.Employee_ID
+
+
+---- *****UNION OPERATOR*****
+
+--SELECT * FROM EmployeeDemographics
+--UNION		-- Operator is used to combine the result-set of two or more SELECT statements.
+--SELECT * FROM WareHouseEmployeeDemographics
+--ORDER BY Employee_ID
+
+--SELECT * FROM EmployeeDemographics
+--UNION ALL		-- Selects only distinct values by default allow duplicate values
+--SELECT * FROM WareHouseEmployeeDemographics
+--ORDER BY Employee_ID
+
+
+---- *****HAVING CLAUSE*****
+
+------SELECT COUNT(CustomerID), Country
+------FROM Customers
+------GROUP BY Country
+------HAVING COUNT(CustomerID) > 5;
+
+
+---- *****UPDATE DATA*****
+
+--UPDATE EmployeeDemographics
+--SET First_Name = 'Gökhan', Gender = 'Male'
+--WHERE Employee_ID = 1004;		-- IF U  DONT USE WHERE CHANGE ALL OF COLUMNS
+
+
+---- *****DELETE DATA*****
+
+--DELETE FROM EmployeeDemographics WHERE First_Name = 'Ömer'; --Delete Row
+
+
+---- *****ALIASING*****
+
+--SELECT Employee_ID AS ID, First_Name AS NAME
+--FROM EmployeeDemographics
